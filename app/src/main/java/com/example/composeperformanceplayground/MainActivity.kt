@@ -25,8 +25,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 val viewModel = hiltViewModel<TypicalViewModel>()
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    val scrollState = rememberScrollState()
-                    Column(modifier = Modifier.verticalScroll(scrollState)) {
+                    Column {
                         Greeting("Android")
                         val checked = remember { mutableStateOf(false) }
                         RadioButton(selected = checked.value, onClick = {
@@ -34,6 +33,7 @@ class MainActivity : ComponentActivity() {
                             checked.value = !checked.value
                         })
                         UnstableClassUsageScreen()
+                        UnstableListScreen()
                         UnstableLambdaScreen()
                         UnstableLambdaScreenV2 {
                             viewModel.onContinueClick()
