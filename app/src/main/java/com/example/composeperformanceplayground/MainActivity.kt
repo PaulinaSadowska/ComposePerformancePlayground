@@ -25,35 +25,40 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 val viewModel = hiltViewModel<TypicalViewModel>()
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Column {
-                        Greeting("Android")
+                    /*Column {
                         val checked = remember { mutableStateOf(false) }
                         RadioButton(selected = checked.value, onClick = {
                             viewModel.increaseCounter()
                             checked.value = !checked.value
                         })
-                        UnstableClassUsageScreen()
-                        StateReadsInlinedComposablesScreen()
-                        StateReadsInlinedComposablesSolution2Screen()
-                        UnstableListScreen()
-                        UnstableLambdaScreen()
-                        UnstableLambdaScreenV2 {
-                            viewModel.onContinueClick()
-                        }
-                        UnstableLambdaScreenV3 {
-                            viewModel.onContinueClick()
-                        }
-                        StableLambdaScreen()
-                        val stableLambda = remember(viewModel) {
-                            { viewModel.onContinueClick() }
-                        }
-                        StableLambdaScreenV2(stableLambda)
-                        UnstableLambdaScreenV4 {
-                            viewModel.onContinueClick()
-                        }
-                    }
+                        //Examples(viewModel)
+                    }*/
+                    ModifierLambdasScreen()
                 }
             }
+        }
+    }
+
+    @Composable
+    private fun Examples(viewModel: TypicalViewModel) {
+        UnstableClassUsageScreen()
+        StateReadsInlinedComposablesScreen()
+        StateReadsInlinedComposablesSolution2Screen()
+        UnstableListScreen()
+        UnstableLambdaScreen()
+        UnstableLambdaScreenV2 {
+            viewModel.onContinueClick()
+        }
+        UnstableLambdaScreenV3 {
+            viewModel.onContinueClick()
+        }
+        StableLambdaScreen()
+        val stableLambda = remember(viewModel) {
+            { viewModel.onContinueClick() }
+        }
+        StableLambdaScreenV2(stableLambda)
+        UnstableLambdaScreenV4 {
+            viewModel.onContinueClick()
         }
     }
 }
