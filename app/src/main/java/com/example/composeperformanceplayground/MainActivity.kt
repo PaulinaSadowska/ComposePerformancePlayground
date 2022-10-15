@@ -5,6 +5,8 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.RadioButton
 import androidx.compose.material.Surface
@@ -23,7 +25,8 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 val viewModel = hiltViewModel<TypicalViewModel>()
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Column {
+                    val scrollState = rememberScrollState()
+                    Column(modifier = Modifier.verticalScroll(scrollState)) {
                         Greeting("Android")
                         val checked = remember { mutableStateOf(false) }
                         RadioButton(selected = checked.value, onClick = {
@@ -31,6 +34,21 @@ class MainActivity : ComponentActivity() {
                             checked.value = !checked.value
                         })
                         UnstableClassUsageScreen()
+                        UnstableLambdaScreen()
+                        UnstableLambdaScreenV2 {
+                            viewModel.onContinueClick()
+                        }
+                        UnstableLambdaScreenV3 {
+                            viewModel.onContinueClick()
+                        }
+                        StableLambdaScreen()
+                        val stableLambda = remember(viewModel) {
+                            { viewModel.onContinueClick() }
+                        }
+                        StableLambdaScreenV2(stableLambda)
+                        UnstableLambdaScreenV4 {
+                            viewModel.onContinueClick()
+                        }
                     }
                 }
             }

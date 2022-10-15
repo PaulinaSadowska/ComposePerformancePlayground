@@ -49,6 +49,10 @@ class TypicalViewModel @Inject constructor() : ViewModel() {
             _user2.value = _user2.value?.copy(name = "SECOND TEST $i")
         }
     }
+
+    fun onContinueClick() {
+
+    }
 }
 
 @Composable
