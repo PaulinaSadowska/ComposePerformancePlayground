@@ -11,7 +11,7 @@ import androidx.compose.runtime.remember
 
 @Composable
 fun UnstableListScreen() {
-    val items = remember { (0..100).map { it }.toMutableList() }
+    val items = remember { (0..6).map { it }.toMutableList() }
     Box {
         WrappedLazyColumn(items = items)
     }

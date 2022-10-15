@@ -33,6 +33,8 @@ class MainActivity : ComponentActivity() {
                             checked.value = !checked.value
                         })
                         UnstableClassUsageScreen()
+                        StateReadsInlinedComposablesScreen()
+                        StateReadsInlinedComposablesSolution2Screen()
                         UnstableListScreen()
                         UnstableLambdaScreen()
                         UnstableLambdaScreenV2 {
